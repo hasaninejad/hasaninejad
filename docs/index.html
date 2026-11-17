@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>HASANINEJAD | ثبت مأموریت و تردد</title>
+  <meta name="description" content="ثبت مأموریت و تردد با تاریخ شمسی، ذخیره روی گوشی و خروجی CSV." />
+  <meta name="theme-color" content="#14335c" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="حسنی‌نژاد" />
+
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="icon" href="./icons/icon-192.png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="./icons/icon-192.png" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-en">HASANINEJAD</span>
+      <span class="brand-fa">سامانه ثبت مأموریت و تردد</span>
+    </div>
+    <button id="installBtn" class="ghost-btn" hidden>نصب روی گوشی</button>
+  </header>
+
+  <main>
+    <section class="card clock-card" aria-live="polite">
+      <p class="today" id="todayText">—</p>
+      <p class="status" id="statusText">هنوز مأموریتی در جریان نیست.</p>
+    </section>
+
+    <div class="actions">
+      <button id="startBtn" class="btn btn-blue">شروع مأموریت / خروج</button>
+      <button id="finishBtn" class="btn btn-green" disabled>پایان مأموریت / بازگشت</button>
+    </div>
+
+    <section class="card form-card">
+      <label class="field">
+        <span class="field-label">مکان مأموریت</span>
+        <input id="locationInput" type="text" inputmode="text" autocomplete="off"
+               placeholder="مثلاً: شعبه مرکزی، اداره ..." />
+      </label>
+
+      <label class="field">
+        <span class="field-label">توضیحات فنی / شرح مأموریت</span>
+        <textarea id="detailsInput" rows="3" placeholder="شرح کوتاه مأموریت را وارد کن"></textarea>
+      </label>
+    </section>
+
+    <div class="actions actions-secondary">
+      <button id="quickBtn" class="btn btn-grey">گزارش سریع جداگانه</button>
+      <button id="exportBtn" class="btn btn-green-outline">خروجی Excel (CSV)</button>
+    </div>
+
+    <section class="history-section">
+      <h2 class="section-title">سوابق مأموریت‌ها</h2>
+      <ul id="historyList" class="history-list"></ul>
+      <p id="historyEmpty" class="empty-state">هنوز مأموریت ثبت‌شده‌ای وجود ندارد.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>داده‌ها فقط روی همین گوشی ذخیره می‌شوند.</span>
+  </footer>
+
+  <dialog id="quickDialog" class="dialog">
+    <form method="dialog" id="quickForm" class="dialog-body">
+      <h3>گزارش سریع جداگانه</h3>
+      <label class="field">
+        <span class="field-label">مکان</span>
+        <input id="quickLocation" type="text" autocomplete="off" placeholder="مکان" />
+      </label>
+      <label class="field">
+        <span class="field-label">شرح گزارش</span>
+        <textarea id="quickDetails" rows="3" placeholder="شرح گزارش سریع"></textarea>
+      </label>
+      <div class="dialog-actions">
+        <button id="quickSave" type="submit" class="btn btn-blue">ذخیره گزارش</button>
+        <button id="quickCancel" type="button" class="btn btn-grey">بازگشت</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="./jalali.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
