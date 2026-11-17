@@ -1,0 +1,297 @@
+:root {
+  --navy: #14335c;
+  --navy-soft: #1d4472;
+  --blue: #1f6bac;
+  --green: #1f855c;
+  --grey: #616b7a;
+  --text: #14202e;
+  --muted: #5b6776;
+  --bg: #f2f6fa;
+  --surface: #ffffff;
+  --line: #dbe4ee;
+  --shadow: 0 1px 2px rgba(16, 34, 54, .06), 0 8px 24px rgba(16, 34, 54, .06);
+  --radius: 14px;
+  --tap: 48px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Vazirmatn", "Segoe UI", Tahoma, system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* ---------- header ---------- */
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px 16px calc(14px + env(safe-area-inset-top));
+  background: linear-gradient(150deg, var(--navy) 0%, var(--navy-soft) 100%);
+  color: #fff;
+  border-radius: 0 0 18px 18px;
+  box-shadow: var(--shadow);
+}
+
+.brand { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+
+.brand-en {
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: .14em;
+}
+
+.brand-fa { font-size: 13px; opacity: .82; }
+
+.ghost-btn {
+  border: 1px solid rgba(255, 255, 255, .45);
+  background: rgba(255, 255, 255, .1);
+  color: #fff;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+/* ---------- layout ---------- */
+main {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 16px 14px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 14px;
+}
+
+.clock-card { display: flex; flex-direction: column; gap: 4px; }
+
+.today {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.status {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.status.is-active { color: var(--green); font-weight: 600; }
+
+/* ---------- buttons ---------- */
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.actions-secondary { grid-template-columns: 1fr 1fr; }
+
+.btn {
+  min-height: var(--tap);
+  border: 0;
+  border-radius: 12px;
+  padding: 12px 14px;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  transition: transform .06s ease, filter .15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn:active:not(:disabled) { transform: scale(.985); }
+.btn:disabled { opacity: .45; cursor: not-allowed; }
+
+.btn-blue { background: var(--blue); }
+.btn-green { background: var(--green); }
+.btn-grey { background: var(--grey); }
+
+.btn-green-outline {
+  background: transparent;
+  color: var(--green);
+  border: 1.5px solid var(--green);
+}
+
+/* ---------- form ---------- */
+.form-card { display: flex; flex-direction: column; gap: 12px; }
+
+.field { display: flex; flex-direction: column; gap: 6px; }
+
+.field-label { font-size: 13px; font-weight: 600; color: var(--muted); }
+
+input[type="text"], textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fbfcfe;
+  color: var(--text);
+  font: inherit;
+  font-size: 15px;
+  padding: 11px 12px;
+  resize: vertical;
+}
+
+input[type="text"]:focus, textarea:focus {
+  outline: 2px solid rgba(31, 107, 172, .35);
+  border-color: var(--blue);
+  background: #fff;
+}
+
+/* ---------- history ---------- */
+.history-section { display: flex; flex-direction: column; gap: 8px; }
+
+.section-title {
+  margin: 6px 2px 0;
+  font-size: 15px;
+  color: var(--navy);
+}
+
+.history-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.history-item {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.history-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--navy);
+}
+
+.history-duration {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--green);
+  background: rgba(31, 133, 92, .1);
+  border-radius: 999px;
+  padding: 2px 10px;
+}
+
+.history-row {
+  display: flex;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.history-row b { color: var(--text); font-weight: 600; }
+
+.history-details {
+  margin: 0;
+  font-size: 13px;
+  color: var(--muted);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.empty-state {
+  margin: 0;
+  padding: 18px 12px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--muted);
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, .6);
+}
+
+/* ---------- dialog ---------- */
+.dialog {
+  border: 0;
+  border-radius: 16px;
+  padding: 0;
+  width: min(92vw, 460px);
+  box-shadow: 0 20px 50px rgba(10, 24, 40, .28);
+}
+
+.dialog::backdrop { background: rgba(10, 24, 40, .45); }
+
+.dialog-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 18px;
+}
+
+.dialog-body h3 { margin: 0; font-size: 16px; color: var(--navy); }
+
+.dialog-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+/* ---------- footer / toast ---------- */
+.footer {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 16px 22px;
+  font-size: 12px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.toast {
+  position: fixed;
+  inset-inline: 16px;
+  bottom: calc(18px + env(safe-area-inset-bottom));
+  margin: 0 auto;
+  max-width: 520px;
+  background: #10243c;
+  color: #fff;
+  font-size: 14px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  box-shadow: 0 12px 30px rgba(10, 24, 40, .3);
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity .2s ease, transform .2s ease;
+  z-index: 50;
+}
+
+.toast.is-visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 360px) {
+  .actions, .actions-secondary, .dialog-actions { grid-template-columns: 1fr; }
+  .brand-en { font-size: 15px; }
+}
